@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+// Define the structure for Rectangle
+struct Rectangle {
+    int length;
+    int breadth;
+};
+
+// Define the structure for Square
+struct Square {
+    int side;
+    int area;
+};
+
+// Define the union to encompass both Rectangle and Square
+union Shape {
+    struct Rectangle rectangle;
+    struct Square square;
+};
+
+int main() {
+    // Create a union object
+    union Shape shape;
+
+    // Assign values for Rectangle
+    shape.rectangle.length = 5;
+    shape.rectangle.breadth = 3;
+
+    // Calculate area for rectangle and assign it
+    shape.rectangle.area = shape.rectangle.length * shape.rectangle.breadth;
+
+    // Print the rectangle attributes
+    printf("Rectangle - Length: %d, Breadth: %d, Area: %d\n", shape.rectangle.length, shape.rectangle.breadth, shape.rectangle.area);
+
+    // Assign values for Square
+    shape.square.side = 4;
+
+    // Calculate area for square and assign it
+    shape.square.area = shape.square.side * shape.square.side;
+
+    // Print the square attributes
+    printf("Square - Side: %d, Area: %d\n", shape.square.side, shape.square.area);
+
+    return 0;
+}
+this program, we define the structures for Rectangle and Square, and then create a union called Shape to encompass both structures.
